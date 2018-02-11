@@ -1,4 +1,4 @@
-public class GetMarketResult {
+class GetMarketResult {
 	private int MarketID;
 	private String MarketAssetName;
 	private String MarketAssetCode;
@@ -9,15 +9,39 @@ public class GetMarketResult {
 	private int BaseCurrencyID;
 	private boolean Active;
 
-	public GetMarketResult(int marketID, String marketAssetName, String marketAssetCode, int marketAssetID, String marketAssetType, String baseCurrency, String baseCurrencyCode, int baseCurrencyID, boolean active) {
-		MarketID = marketID;
-		MarketAssetName = marketAssetName;
-		MarketAssetCode = marketAssetCode;
-		MarketAssetID = marketAssetID;
-		MarketAssetType = marketAssetType;
-		BaseCurrency = baseCurrency;
-		BaseCurrencyCode = baseCurrencyCode;
-		BaseCurrencyID = baseCurrencyID;
-		Active = active;
+	public int getMarketID() {
+		return MarketID;
+	}
+
+	public String getMarketAssetName() {
+		return MarketAssetName;
+	}
+
+	public String getMarketAssetCode() {
+		return MarketAssetCode;
+	}
+
+	public int getMarketAssetID() {
+		return MarketAssetID;
+	}
+
+	public String getMarketAssetType() {
+		return MarketAssetType;
+	}
+
+	public String getBaseCurrency() {
+		return BaseCurrency;
+	}
+
+	public String getBaseCurrencyCode() {
+		return BaseCurrencyCode;
+	}
+
+	public int getBaseCurrencyID() {
+		return BaseCurrencyID;
+	}
+
+	public boolean isActive() {
+		return Active;
 	}
 }

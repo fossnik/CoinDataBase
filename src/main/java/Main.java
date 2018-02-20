@@ -1,4 +1,6 @@
 import com.google.gson.Gson;
+import model.GetMarketSummaries;
+import model.GetMarkets;
 
 /**
  * Important Documentation
@@ -13,7 +15,7 @@ public class Main {
 		String apiReturn = GetMarkets.queryEndpoint();
 		GetMarkets[] getMarkets = new Gson().fromJson(apiReturn, GetMarkets[].class);
 
-		System.out.println("Demonstrating GetMarkets endpoint deserialization.");
+		System.out.println("Demonstrating model.GetMarkets endpoint deserialization.");
 		for (GetMarkets g : getMarkets)
 			System.out.println(g.getMarketAssetName());
 
@@ -21,7 +23,7 @@ public class Main {
 		apiReturn = GetMarketSummaries.queryEndpoint();
 		GetMarketSummaries[] getMarketSummaries = new Gson().fromJson(apiReturn, GetMarketSummaries[].class);
 
-		System.out.println("\n\nDemonstrating GetMarketSummaries endpoint deserialization.");
+		System.out.println("\n\nDemonstrating model.GetMarketSummaries endpoint deserialization.");
 		for (GetMarketSummaries g : getMarketSummaries)
 			System.out.println("mID: " + g.getMarketID() + "\t" + "Volume: " + g.getVolume());
 	}

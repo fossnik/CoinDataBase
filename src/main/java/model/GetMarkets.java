@@ -1,3 +1,5 @@
+package model;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -5,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class GetMarkets {
+public class GetMarkets {
 	private int MarketID;
 	private String MarketAssetName;
 	private String MarketAssetCode;

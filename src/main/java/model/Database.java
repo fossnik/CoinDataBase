@@ -18,30 +18,26 @@ public class Database {
 	private static final String COLUMN_GETMARKETS_BASECURRENCYID = "BaseCurrencyID";
 	private static final String COLUMN_GETMARKETS_ACTIVE = "Active";
 
-	private static final String TABLE_GETMARKETSUMMARIES = "getMarketSummaries";
-	private static final String COLUMN_GETMARKETSUMMARIES_ID = "_id";
-	private static final String COLUMN_GETMARKETSUMMARIES_TIME = "time";
-	private static final String COLUMN_GETMARKETSUMMARIES_MARKETID = "MarketID";
-	private static final String COLUMN_GETMARKETSUMMARIES_LASTPRICE = "LastPrice";
-	private static final String COLUMN_GETMARKETSUMMARIES_CHANGE = "Change";
-	private static final String COLUMN_GETMARKETSUMMARIES_HighPrice = "HighPrice";
-	private static final String COLUMN_GETMARKETSUMMARIES_LowPrice = "Volume";
-	private static final String COLUMN_GETMARKETSUMMARIES_BTCVOLUME = "BtcVolume";
-	private static final String COLUMN_GETMARKETSUMMARIES_TRADECOUNT = "BidPrice";
-	private static final String COLUMN_GETMARKETSUMMARIES_ASKPRICE = "AskPrice";
-	private static final String COLUMN_GETMARKETSUMMARIES_BUYORDERCOUNT = "BuyOrderCount";
-	private static final String COLUMN_GETMARKETSUMMARIES_SELLORDERCOUNT = "SellOrderCount";
+//	private static final String TABLE_GETMARKETSUMMARIES = "getMarketSummaries";
+//	private static final String COLUMN_GETMARKETSUMMARIES_ID = "_id";
+//	private static final String COLUMN_GETMARKETSUMMARIES_TIME = "time";
+//	private static final String COLUMN_GETMARKETSUMMARIES_MARKETID = "MarketID";
+//	private static final String COLUMN_GETMARKETSUMMARIES_LASTPRICE = "LastPrice";
+//	private static final String COLUMN_GETMARKETSUMMARIES_CHANGE = "Change";
+//	private static final String COLUMN_GETMARKETSUMMARIES_HighPrice = "HighPrice";
+//	private static final String COLUMN_GETMARKETSUMMARIES_LowPrice = "Volume";
+//	private static final String COLUMN_GETMARKETSUMMARIES_BTCVOLUME = "BtcVolume";
+//	private static final String COLUMN_GETMARKETSUMMARIES_TRADECOUNT = "BidPrice";
+//	private static final String COLUMN_GETMARKETSUMMARIES_ASKPRICE = "AskPrice";
+//	private static final String COLUMN_GETMARKETSUMMARIES_BUYORDERCOUNT = "BuyOrderCount";
+//	private static final String COLUMN_GETMARKETSUMMARIES_SELLORDERCOUNT = "SellOrderCount";
 
 	private static final String CREATE_GETMARKETS_TABLE = "";
 	private static final String CREATE_GETMARKETSUMMARIES_TABLE = "";
 
-	private static final String APPEND_GETMARKETS = "INSERT INTO " + TABLE_GETMARKETS;
-	private static final String APPEND_GETMARKETSUMMARIES = "INSERT INTO " + TABLE_GETMARKETSUMMARIES;
-
 	private Connection conn;
 
-	public Database(String path) {
-		String DB_PATH = path;
+	public Database(String DB_PATH) {
 		CONNECTION_STRING = "jdbc:sqlite:" + DB_PATH;
 	}
 
@@ -67,32 +63,62 @@ public class Database {
 	}
 
 	public boolean appendGetMarkets(GetMarkets[] getMarkets) {
+
 		try (Statement statement = conn.createStatement()) {
-			for (GetMarkets g : getMarkets)
-				statement.execute(APPEND_GETMARKETS);
+			for (GetMarkets g : getMarkets) {
+				String append = "INSERT INTO " + TABLE_GETMARKETS;
+
+				append += '(' +
+						COLUMN_GETMARKETS_ID + ',' +
+						COLUMN_GETMARKETS_TIME + ',' +
+						COLUMN_GETMARKETS_MARKETASSETNAME + ',' +
+						COLUMN_GETMARKETS_MARKETASSETCODE + ',' +
+						COLUMN_GETMARKETS_MARKETASSETID + ',' +
+						COLUMN_GETMARKETS_MARKETASSETTYPE + ',' +
+						COLUMN_GETMARKETS_BASECURRENCY + ',' +
+						COLUMN_GETMARKETS_BASECURRENCYCODE + ',' +
+						COLUMN_GETMARKETS_BASECURRENCYID + ',' +
+						COLUMN_GETMARKETS_ACTIVE +
+				')';
+
+				append += " VALUES(" +
+						g.getMarketID() + ',' +
+						g.getTime() + ',' +
+						g.getMarketAssetName() + ',' +
+						g.getMarketAssetCode() + ',' +
+						g.getMarketAssetID() + ',' +
+						g.getMarketAssetType() + ',' +
+						g.getBaseCurrency() + ',' +
+						g.getBaseCurrencyCode() + ',' +
+						g.getBaseCurrencyID() + ',' +
+						g.isActive() +
+				')';
+
+				statement.execute(append);
+			}
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Create Table Failed: " + e.getMessage());
+			System.out.println("Insert data Failed: " + e.getMessage());
 			return false;
 		}
 	}
 
 	public boolean appendGetMarketSummaries(GetMarketSummaries[] getMarketSummaries) {
-		try (Statement statement = conn.createStatement()) {
-			for (GetMarketSummaries g : getMarketSummaries)
-				statement.execute(APPEND_GETMARKETSUMMARIES);
-			return true;
-		} catch (SQLException e) {
-			System.out.println("Create Table Failed: " + e.getMessage());
-			return false;
-		}
+		throw new UnsupportedOperationException("Not Yet Implemented");
+//		try (Statement statement = conn.createStatement()) {
+//			for (GetMarketSummaries g : getMarketSummaries)
+//				statement.execute(APPEND_GETMARKETSUMMARIES);
+//			return true;
+//		} catch (SQLException e) {
+//			System.out.println("Create Table Failed: " + e.getMessage());
+//			return false;
+//		}
 	}
 
 	public void close() {
 		try {
-			if(conn != null) {
+			if(conn != null)
 				conn.close();
-			}
 		} catch(SQLException e) {
 			System.out.println("Couldn't close connection: " + e.getMessage());
 		}

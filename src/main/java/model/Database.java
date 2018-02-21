@@ -32,8 +32,21 @@ public class Database {
 //	private static final String COLUMN_GETMARKETSUMMARIES_BUYORDERCOUNT = "BuyOrderCount";
 //	private static final String COLUMN_GETMARKETSUMMARIES_SELLORDERCOUNT = "SellOrderCount";
 
-	private static final String CREATE_GETMARKETS_TABLE = "";
-	private static final String CREATE_GETMARKETSUMMARIES_TABLE = "";
+	private static final String CREATE_GETMARKETS_TABLE =
+			"CREATE TABLE " + TABLE_GETMARKETS + '(' +
+					COLUMN_GETMARKETS_ID + " int," +
+					COLUMN_GETMARKETS_TIME + "String, " +
+					COLUMN_GETMARKETS_MARKETASSETNAME + "String, " +
+					COLUMN_GETMARKETS_MARKETASSETCODE + "String, " +
+					COLUMN_GETMARKETS_MARKETASSETID + " int," +
+					COLUMN_GETMARKETS_MARKETASSETTYPE + "String, " +
+					COLUMN_GETMARKETS_BASECURRENCY + "String, " +
+					COLUMN_GETMARKETS_BASECURRENCYCODE + "String, " +
+					COLUMN_GETMARKETS_BASECURRENCYID + " int," +
+					COLUMN_GETMARKETS_ACTIVE + " boolean" +
+					");";
+
+//	private static final String CREATE_GETMARKETSUMMARIES_TABLE = "";
 
 	private Connection conn;
 
@@ -92,7 +105,7 @@ public class Database {
 						g.getBaseCurrencyCode() + ',' +
 						g.getBaseCurrencyID() + ',' +
 						g.isActive() +
-				')';
+				");";
 
 				statement.execute(append);
 			}

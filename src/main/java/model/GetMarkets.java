@@ -37,6 +37,10 @@ public class GetMarkets {
 		return result.substring(result.indexOf("[{"),result.indexOf("]}")+1);
 	}
 
+	public Date getTime() {
+		return time;
+	}
+
 	public int getMarketID() {
 		return MarketID;
 	}

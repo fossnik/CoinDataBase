@@ -4,45 +4,44 @@ import java.sql.*;
 
 public class Database {
 
-	private static String DB_PATH = null;
 	private static String CONNECTION_STRING = null;
 
-	public static final String TABLE_GETMARKETS = "getmarkets";
-	public static final String COLUMN_GETMARKETS_ID = "_id";
-	public static final String COLUMN_GETMARKETS_TIME = "time";
-	public static final String COLUMN_GETMARKETS_MARKETASSETNAME = "MarketID";
-	public static final String COLUMN_GETMARKETS_MARKETASSETCODE = "MarketAssetCode";
-	public static final String COLUMN_GETMARKETS_MARKETASSETID = "MarketAssetID";
-	public static final String COLUMN_GETMARKETS_MARKETASSETTYPE = "MarketAssetType";
-	public static final String COLUMN_GETMARKETS_BASECURRENCY = "BaseCurrency";
-	public static final String COLUMN_GETMARKETS_BASECURRENCYCODE = "BaseCurrencyCode";
-	public static final String COLUMN_GETMARKETS_BASECURRENCYID = "BaseCurrencyID";
-	public static final String COLUMN_GETMARKETS_ACTIVE = "Active";
+	private static final String TABLE_GETMARKETS = "getmarkets";
+	private static final String COLUMN_GETMARKETS_ID = "_id";
+	private static final String COLUMN_GETMARKETS_TIME = "time";
+	private static final String COLUMN_GETMARKETS_MARKETASSETNAME = "MarketID";
+	private static final String COLUMN_GETMARKETS_MARKETASSETCODE = "MarketAssetCode";
+	private static final String COLUMN_GETMARKETS_MARKETASSETID = "MarketAssetID";
+	private static final String COLUMN_GETMARKETS_MARKETASSETTYPE = "MarketAssetType";
+	private static final String COLUMN_GETMARKETS_BASECURRENCY = "BaseCurrency";
+	private static final String COLUMN_GETMARKETS_BASECURRENCYCODE = "BaseCurrencyCode";
+	private static final String COLUMN_GETMARKETS_BASECURRENCYID = "BaseCurrencyID";
+	private static final String COLUMN_GETMARKETS_ACTIVE = "Active";
 
-	public static final String TABLE_GETMARKETSUMMARIES = "getMarketSummaries";
-	public static final String COLUMN_GETMARKETSUMMARIES_ID = "_id";
-	public static final String COLUMN_GETMARKETSUMMARIES_TIME = "time";
-	public static final String COLUMN_GETMARKETSUMMARIES_MARKETID = "MarketID";
-	public static final String COLUMN_GETMARKETSUMMARIES_LASTPRICE = "LastPrice";
-	public static final String COLUMN_GETMARKETSUMMARIES_CHANGE = "Change";
-	public static final String COLUMN_GETMARKETSUMMARIES_HighPrice = "HighPrice";
-	public static final String COLUMN_GETMARKETSUMMARIES_LowPrice = "Volume";
-	public static final String COLUMN_GETMARKETSUMMARIES_BTCVOLUME = "BtcVolume";
-	public static final String COLUMN_GETMARKETSUMMARIES_TRADECOUNT = "BidPrice";
-	public static final String COLUMN_GETMARKETSUMMARIES_ASKPRICE = "AskPrice";
-	public static final String COLUMN_GETMARKETSUMMARIES_BUYORDERCOUNT = "BuyOrderCount";
-	public static final String COLUMN_GETMARKETSUMMARIES_SELLORDERCOUNT = "SellOrderCount";
+	private static final String TABLE_GETMARKETSUMMARIES = "getMarketSummaries";
+	private static final String COLUMN_GETMARKETSUMMARIES_ID = "_id";
+	private static final String COLUMN_GETMARKETSUMMARIES_TIME = "time";
+	private static final String COLUMN_GETMARKETSUMMARIES_MARKETID = "MarketID";
+	private static final String COLUMN_GETMARKETSUMMARIES_LASTPRICE = "LastPrice";
+	private static final String COLUMN_GETMARKETSUMMARIES_CHANGE = "Change";
+	private static final String COLUMN_GETMARKETSUMMARIES_HighPrice = "HighPrice";
+	private static final String COLUMN_GETMARKETSUMMARIES_LowPrice = "Volume";
+	private static final String COLUMN_GETMARKETSUMMARIES_BTCVOLUME = "BtcVolume";
+	private static final String COLUMN_GETMARKETSUMMARIES_TRADECOUNT = "BidPrice";
+	private static final String COLUMN_GETMARKETSUMMARIES_ASKPRICE = "AskPrice";
+	private static final String COLUMN_GETMARKETSUMMARIES_BUYORDERCOUNT = "BuyOrderCount";
+	private static final String COLUMN_GETMARKETSUMMARIES_SELLORDERCOUNT = "SellOrderCount";
 
-	public static final String CREATE_GETMARKETS_TABLE = "";
-	public static final String CREATE_GETMARKETSUMMARIES_TABLE = "";
+	private static final String CREATE_GETMARKETS_TABLE = "";
+	private static final String CREATE_GETMARKETSUMMARIES_TABLE = "";
 
-	public static final String APPEND_GETMARKETS = "INSERT INTO " + TABLE_GETMARKETS;
-	public static final String APPEND_GETMARKETSUMMARIES = "INSERT INTO " + TABLE_GETMARKETSUMMARIES;
+	private static final String APPEND_GETMARKETS = "INSERT INTO " + TABLE_GETMARKETS;
+	private static final String APPEND_GETMARKETSUMMARIES = "INSERT INTO " + TABLE_GETMARKETSUMMARIES;
 
 	private Connection conn;
 
 	public Database(String path) {
-		DB_PATH = path;
+		String DB_PATH = path;
 		CONNECTION_STRING = "jdbc:sqlite:" + DB_PATH;
 	}
 

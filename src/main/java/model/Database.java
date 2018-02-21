@@ -67,7 +67,7 @@ public class Database {
 	public boolean createDataBase() {
 		try (Statement statement = conn.createStatement()) {
 			statement.execute(CREATE_GETMARKETS_TABLE);
-			statement.execute(CREATE_GETMARKETSUMMARIES_TABLE);
+//			statement.execute(CREATE_GETMARKETSUMMARIES_TABLE);
 			return true;
 		} catch (SQLException e) {
 			System.out.println("Create Table Failed: " + e.getMessage());

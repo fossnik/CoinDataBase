@@ -1,13 +1,13 @@
 package model;
 
-import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 public class GetMarkets {
+	private Date time = new Date();
 	private int MarketID;
 	private String MarketAssetName;
 	private String MarketAssetCode;

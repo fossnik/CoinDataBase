@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 public class GetMarketSummaries {
+	private Date time = new Date();
 	private int MarketID;
 	private double LastPrice;
 	private double Change;
